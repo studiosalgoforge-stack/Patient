@@ -1,64 +1,145 @@
+// src/app/page.tsx
+import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { Ambulance, Heart, Microscope, Brain, Stethoscope, Star } from 'lucide-react';
+import ServiceCard from '@/components/ui/ServiceCard';
+import PatientReviewCard from '@/components/ui/PatientReviewCard';
+import SpecialistCard from '@/components/ui/SpecialistCard';
+
+// --- Data Definitions ---
+
+// Ensure you have images named like 'DoctorFemale.jpg' and 'PatientMale.jpg', etc., in your public/images directory.
+
+const serviceData = [
+  { title: "Emergency Department", description: "If you visit site regularly and would like to", Icon: Ambulance },
+  { title: "Pediatric Department", description: "If you visit site regularly and would like to", Icon: Stethoscope },
+  { title: "General Physician", description: "If you visit site regularly and would like to", Icon: Microscope },
+  { title: "Neurology Department", description: "If you visit site regularly and would like to", Icon: Brain },
+  { title: "Cardiology Department", description: "If you visit site regularly and would like to", Icon: Heart },
+];
+
+const patientReviews = [
+  { name: "Excellent care!", rating: 5.0, review: "Highly recommend.", image: "/images/patient-1.jpg" },
+  { name: "Sercellent care!", rating: 5.0, review: "Really great (patient extra text to extend)", image: "/images/patient-2.jpg" },
+  { name: "Hiceral Physician", rating: 4.5, review: "Dedication.", image: "/images/patient-3.jpg", viewProfile: true },
+];
+
+const specialistsData = [
+  { name: "Cardigiak", specialty: "Cardiologist", bio: "Best cardiac services." },
+  { name: "Dermintostasik", specialty: "Dermatologist", bio: "Specialized skin care." },
+  { name: "DermaMeds", specialty: "Specialist", bio: "General medicine expert." },
+  { name: "NeuroExpert", specialty: "Neurologist", bio: "Advanced brain studies." },
+];
+
+// --- Main Component ---
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="min-h-screen bg-gray-50">
+    
+
+      <main className="pt-12">
+        {/* 1. HERO SECTION */}
+        <section className="bg-white pt-20 pb-20 overflow-hidden">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between px-4">
+            {/* Text Content */}
+            <div className="lg:w-1/2 mb-10 lg:mb-0">
+              <h1 className="text-5xl font-extrabold text-gray-800 mb-6 leading-tight">
+                Your Partner In <span className="text-blue-600">Health</span> And Wellness
+              </h1>
+              <p className="text-gray-500 text-lg mb-8 max-w-lg">
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using
+              </p>
+              <Link href="/login" className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg">
+                BOOK AN APPOINTMENT
+              </Link>
+            </div>
+
+            {/* Image Content (Doctor with Circles) */}
+            <div className="lg:w-1/2 relative flex justify-center h-[450px]">
+              <div className="absolute w-full h-full">
+                {/* Large Light Blue Circle */}
+                <div className="absolute top-10 right-0 w-80 h-80 bg-blue-100 rounded-full opacity-50"></div>
+                {/* Smaller Dark Circle (Behind Doctor) */}
+                <div className="absolute bottom-10 left-[20%] w-40 h-40 bg-gray-700 rounded-full opacity-10"></div>
+                {/* Plus Sign */}
+                <span className="absolute top-20 right-[20%] text-blue-400 text-6xl font-light">+</span>
+              </div>
+              
+              {/* Doctor Image Container */}
+              <div className="relative w-full max-w-md h-full z-10">
+                <Image
+                  src="/images/main_page_img.jpeg"
+                  alt="A female doctor in a scrub and stethoscope smiling"
+                  layout="fill"
+                  objectFit="contain" 
+                  className="rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* 2. SERVICES SECTION */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-2">Our Healthcare Service</h2>
+            <p className="text-center text-gray-500 mb-12 max-w-3xl mx-auto">
+              It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+            </p>
+
+            {/* Service Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+              {serviceData.slice(0, 3).map((service, index) => (
+                <ServiceCard key={index} {...service} />
+              ))}
+            </div>
+
+            {/* Service Cards (Second Row) */}
+            <div className="flex flex-col md:flex-row justify-center gap-8">
+              {serviceData.slice(3).map((service, index) => (
+                <div key={index} className="w-full md:w-auto md:max-w-xs">
+                    <ServiceCard {...service} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 3. TESTIMONIALS SECTION */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-gray-800 mb-10">What Our Patients Say</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {patientReviews.map((review, index) => (
+                <PatientReviewCard key={index} {...review} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. SPECIALISTS SECTION (New Content) */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-gray-800 mb-10">Meet Our Specialists</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {specialistsData.map((specialist, index) => (
+                <SpecialistCard key={index} {...specialist} />
+              ))}
+            </div>
+          </div>
+        </section>
+        
+        {/* 5. FOOTER (Simple placeholder) */}
+        <footer className="bg-blue-600 text-white py-8 mt-10">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; {new Date().getFullYear()} Hospital Management. All rights reserved.</p>
+          </div>
+        </footer>
+
       </main>
     </div>
   );
