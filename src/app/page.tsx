@@ -26,10 +26,10 @@ const patientReviews = [
 ];
 
 const specialistsData = [
-  { name: "Cardigiak", specialty: "Cardiologist", bio: "Best cardiac services." },
-  { name: "Dermintostasik", specialty: "Dermatologist", bio: "Specialized skin care." },
-  { name: "DermaMeds", specialty: "Specialist", bio: "General medicine expert." },
-  { name: "NeuroExpert", specialty: "Neurologist", bio: "Advanced brain studies." },
+  { name: "CardiB", specialty: "Cardiologist", bio: "Best cardiac services." },
+  { name: "Deepak", specialty: "Dermatologist", bio: "Specialized skin care." },
+  { name: "Sakshi", specialty: "Specialist", bio: "General medicine expert." },
+  { name: "Naman", specialty: "Neurologist", bio: "Advanced brain studies." },
 ];
 
 // --- Main Component ---
@@ -52,7 +52,7 @@ export default function Home() {
                 It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using
               </p>
               <Link href="/login" className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg">
-                BOOK AN APPOINTMENT
+                Get Started
               </Link>
             </div>
 
@@ -133,12 +133,7 @@ export default function Home() {
           </div>
         </section>
         
-        {/* 5. FOOTER (Simple placeholder) */}
-        <footer className="bg-blue-600 text-white py-8 mt-10">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <p>&copy; {new Date().getFullYear()} Hospital Management. All rights reserved.</p>
-          </div>
-        </footer>
+      
 
       </main>
     </div>
